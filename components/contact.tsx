@@ -42,7 +42,7 @@ export function Contact() {
           <div className="space-y-6">
             <div>
               <p className="font-mono text-sm text-green-400 mb-4">
-                <span className="text-white">user</span>
+                <span className="text-white">ankushpratham</span>
                 <span className="text-gray-500">@portfolio</span>
                 <span className="text-gray-500">:~$</span>
                 <span className="text-white ml-2">ls -la /social</span>
