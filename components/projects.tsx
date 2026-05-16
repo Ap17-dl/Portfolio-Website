@@ -47,11 +47,11 @@ export function Projects() {
   return (
     <section
       id="projects"
-      className="py-24 border-b border-[#21262d] px-4 relative"
+      className="min-h-screen flex items-center justify-center border-b border-[#21262d] px-4 py-24 relative"
     >
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl w-full mx-auto relative z-10">
         {/* Section title */}
-        <div className="mb-16">
+        <div className="mb-12">
           <h2 className="font-mono text-2xl text-green-400 mb-2">
             [ RECENT_BUILDS ]
           </h2>
@@ -69,14 +69,14 @@ export function Projects() {
             >
               {/* Project card */}
               <div
-                className={`border transition-all duration-200 overflow-hidden backdrop-blur-md bg-[#0a0f0d]/70 ${
+                className={`border transition-all duration-200 overflow-hidden bg-[#0a0f0d]/80 backdrop-blur-xl ${
                   hoveredId === project.id
                     ? 'border-green-400 shadow-lg shadow-green-500/50 glow'
-                    : 'border-gray-700/50 hover:border-gray-600'
+                    : 'border-green-500/20 hover:border-green-500/40'
                 }`}
               >
                 {/* Terminal header */}
-                <div className="bg-[#0f1419]/80 border-b border-gray-700/50 px-4 py-3 flex items-center gap-3">
+                <div className="bg-[#0a0f0d]/60 border-b border-green-500/10 px-4 py-3 flex items-center gap-3">
                   <div className="flex gap-2">
                     <div className="w-2 h-2 rounded-full bg-red-500"></div>
                     <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
