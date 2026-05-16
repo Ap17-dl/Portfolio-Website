@@ -29,7 +29,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Left side - terminal prompt */}
         <div className="font-mono text-sm text-green-400 whitespace-nowrap">
-          <span className="text-white">user</span>
+          <span className="text-white">ankushpratham</span>
           <span className="text-gray-500">@portfolio</span>
           <span className="text-gray-500">:~</span>
           <span className="text-green-400">$</span>
@@ -38,9 +38,9 @@ export function Header() {
         {/* Center - Navigation */}
         <nav className="hidden md:flex items-center gap-8 flex-1 ml-8">
           {[
-            { label: '[01] home', id: 'home' },
-            { label: '[02] projects', id: 'projects' },
-            { label: '[03] contact', id: 'contact' },
+            { label: '[01] home', id: 'Home' },
+            { label: '[02] projects', id: 'Projects' },
+            { label: '[03] contact', id: 'Connect' },
           ].map((item) => (
             <button
               key={item.id}

@@ -10,7 +10,7 @@ export function Footer() {
           {/* Left - Terminal info */}
           <div className="font-mono text-xs text-gray-500">
             <p>
-              <span className="text-green-400">user</span>
+              <span className="text-green-400">ankushpratham</span>
               <span className="text-gray-500">@portfolio</span>
               <span className="text-gray-500">:~$</span>
               <span className="text-white ml-2">echo &quot;Built with passion&quot;</span>
@@ -19,7 +19,7 @@ export function Footer() {
 
           {/* Center - Copyright */}
           <p className="font-mono text-xs text-gray-600">
-            © {currentYear} All rights reserved. Crafted with <span className="text-green-400">{'</>'}</span>
+            © {currentYear} All rights reserved. 
           </p>
 
           {/* Right - Tech stack */}
