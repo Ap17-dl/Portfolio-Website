@@ -35,7 +35,7 @@ export function Hero() {
               {/* Content block */}
               <div className="space-y-6 text-white">
                 <p className="font-sans text-lg leading-relaxed text-gray-200">
-                  AI/ML Engineer passionate about building intelligent, scalable, and impactful solutions that bridge data, automation, and real-world applications.
+                AI/ML Engineer passionate about building scalable intelligent systems that create meaningful real-world impact.  
                 </p>
 
                 <p className="font-sans text-lg leading-relaxed text-gray-300">
@@ -44,7 +44,7 @@ export function Hero() {
                 </p>
 
                 <p className="font-sans text-lg leading-relaxed text-gray-400">
-                  Currently exploring advanced Machine Learning architectures, deployment pipelines, and AI-powered applications that streamline decision-making and enhance digital experiences.
+                  Currently exploring Deep Learning, MLOps, Generative AI, and advanced deployment workflows while creating projects that combine innovation with real-world usability.
                 </p>
               </div>
 
