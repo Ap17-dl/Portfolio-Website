@@ -11,8 +11,8 @@ export function Hero() {
         <div className="mb-12 space-y-6">
           <div className="font-mono text-sm">
             <p className="text-gray-500">
-              <span className="text-green-400">user</span>
-              <span className="text-gray-500">@dev_env</span>
+              <span className="text-green-400">ankushpratham</span>
+              <span className="text-gray-500">@portfolio</span>
               <span className="text-gray-500">:~$</span>
               <span className="text-white ml-2">cat intro.txt</span>
             </p>
