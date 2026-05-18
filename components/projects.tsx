@@ -88,12 +88,18 @@ export function Projects() {
                 </div>
 
                 {/* Content */}
-                <div className="p-6 space-y-4 flex flex-col flex-grow">
+                <div className={`space-y-4 flex flex-col flex-grow ${
+                  project.id > 2 ? 'p-8' : 'p-6'
+                }`}>
                   <div>
-                    <h3 className="font-mono text-lg text-green-400 mb-1">
+                    <h3 className={`font-mono text-green-400 mb-1 ${
+                      project.id > 2 ? 'text-2xl' : 'text-lg'
+                    }`}>
                       {project.title}
                     </h3>
-                    <p className="font-sans text-sm text-gray-400 leading-relaxed">
+                    <p className={`font-sans text-gray-400 leading-relaxed ${
+                      project.id > 2 ? 'text-base' : 'text-sm'
+                    }`}>
                       {project.description}
                     </p>
                   </div>
@@ -103,7 +109,9 @@ export function Projects() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="font-mono text-xs px-3 py-1 border border-gray-700/50 text-gray-400 group-hover:border-green-400/50 group-hover:text-green-400/80 transition-colors"
+                        className={`font-mono px-3 py-1 border border-gray-700/50 text-gray-400 group-hover:border-green-400/50 group-hover:text-green-400/80 transition-colors ${
+                          project.id > 2 ? 'text-sm' : 'text-xs'
+                        }`}
                       >
                         [ #{tag.toLowerCase()} ]
                       </span>
@@ -111,10 +119,14 @@ export function Projects() {
                   </div>
 
                   {/* Action buttons */}
-                  <div className="flex gap-3 pt-4 mt-auto">
+                  <div className={`flex gap-3 pt-4 mt-auto ${
+                    project.id > 2 ? 'gap-4 pt-6' : ''
+                  }`}>
                     <a
                       href={project.demo}
-                      className="flex-1 font-mono text-xs px-4 py-2 border border-green-500 text-green-400 hover:bg-green-500/10 transition-all duration-200 group text-center"
+                      className={`flex-1 font-mono px-4 py-2 border border-green-500 text-green-400 hover:bg-green-500/10 transition-all duration-200 group text-center ${
+                        project.id > 2 ? 'text-sm py-3' : 'text-xs'
+                      }`}
                     >
                       <span className="group-hover:text-green-300">
                         <span className="opacity-0 group-hover:opacity-100 transition-opacity">&gt; </span>[ RUN_DEMO ]
@@ -122,7 +134,9 @@ export function Projects() {
                     </a>
                     <a
                       href={project.source}
-                      className="flex-1 font-mono text-xs px-4 py-2 border border-gray-700 text-gray-400 hover:border-green-500 hover:text-green-400 transition-all duration-200 group text-center"
+                      className={`flex-1 font-mono px-4 py-2 border border-gray-700 text-gray-400 hover:border-green-500 hover:text-green-400 transition-all duration-200 group text-center ${
+                        project.id > 2 ? 'text-sm py-3' : 'text-xs'
+                      }`}
                     >
                       <span className="group-hover:text-green-300">
                         <span className="opacity-0 group-hover:opacity-100 transition-opacity">&gt; </span>[ VIEW_SOURCE ]
