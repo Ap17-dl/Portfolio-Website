@@ -5,26 +5,26 @@ import { useState } from 'react';
 const projects = [
   {
     id: 1,
-    name: 'design-system',
-    title: 'Component Library',
-    description: 'A comprehensive, fully-accessible React component library with 50+ components, TypeScript support, and Storybook documentation.',
-    tags: ['React', 'TypeScript', 'Tailwind', 'Storybook'],
-    demo: '#',
-    source: '#',
+    name: 'data-loss-analyzer',
+    title: 'Data Loss Analyzer',
+    description: 'An AI-powered data analysis platform that detects, visualizes, and predicts data loss patterns using machine learning and interactive dashboards.',
+    tags: ['Python', 'Machine Learning', 'Streamlit', 'Data Analysis'],
+    demo: 'https://data-loss-analyzer.streamlit.app',
+    source: 'https://github.com/Ap17-dl/Data-Loss-Analyzer',
   },
   {
     id: 2,
-    name: 'ecommerce-platform',
-    title: 'E-Commerce Platform',
+    name: 'farm-management',
+    title: 'Smart Farm Database Management',
     description: 'Full-stack e-commerce solution with real-time inventory, Stripe integration, and advanced search capabilities.',
     tags: ['Next.js', 'PostgreSQL', 'Stripe', 'Redis'],
     demo: '#',
-    source: '#',
+    source: 'https://github.com/Ap17-dl/Smart-Farming-Database-Application',
   },
   {
     id: 3,
-    name: 'analytics-dashboard',
-    title: 'Analytics Dashboard',
+    name: 'linkedin-for-artists',
+    title: 'Repose',
     description: 'Real-time analytics dashboard with interactive charts, data visualization, and custom report generation.',
     tags: ['React', 'D3.js', 'Node.js', 'WebSocket'],
     demo: '#',
@@ -32,12 +32,12 @@ const projects = [
   },
   {
     id: 4,
-    name: 'mobile-app',
-    title: 'Mobile App',
-    description: 'Cross-platform mobile application with offline-first architecture, push notifications, and biometric authentication.',
-    tags: ['React Native', 'Firebase', 'GraphQL', 'Redux'],
+    name: 'investors-marketplace',
+    title: 'Investors Marketplace',
+    description: 'A modern investors marketplace platform designed to streamline startup funding, investor discovery, and business collaboration with intelligent insights.',
+    tags: ['Full Stack', 'React', 'MongoDB', 'Machine Learning'],
     demo: '#',
-    source: '#',
+    source: 'https://github.com/Ap17-dl/innovators-marketplace',
   },
 ];
 
@@ -65,11 +65,11 @@ export function Projects() {
               key={project.id}
               onMouseEnter={() => setHoveredId(project.id)}
               onMouseLeave={() => setHoveredId(null)}
-              className="group transition-all duration-200"
+              className="group transition-all duration-200 flex flex-col"
             >
               {/* Project card */}
               <div
-                className={`border transition-all duration-200 overflow-hidden bg-[#0a0f0d]/80 backdrop-blur-xl ${
+                className={`border transition-all duration-200 overflow-hidden bg-[#0a0f0d]/80 backdrop-blur-xl flex flex-col h-full ${
                   hoveredId === project.id
                     ? 'border-green-400 shadow-lg shadow-green-500/50 glow'
                     : 'border-green-500/20 hover:border-green-500/40'
@@ -88,7 +88,7 @@ export function Projects() {
                 </div>
 
                 {/* Content */}
-                <div className="p-6 space-y-4">
+                <div className="p-6 space-y-4 flex flex-col flex-grow">
                   <div>
                     <h3 className="font-mono text-lg text-green-400 mb-1">
                       {project.title}
@@ -111,7 +111,7 @@ export function Projects() {
                   </div>
 
                   {/* Action buttons */}
-                  <div className="flex gap-3 pt-4">
+                  <div className="flex gap-3 pt-4 mt-auto">
                     <a
                       href={project.demo}
                       className="flex-1 font-mono text-xs px-4 py-2 border border-green-500 text-green-400 hover:bg-green-500/10 transition-all duration-200 group text-center"
