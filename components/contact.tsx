@@ -6,16 +6,32 @@ export function Contact() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    setSubmitted(true);
-    setTimeout(() => {
-      setEmail('');
-      setMessage('');
-      setSubmitted(false);
-    }, 3000);
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, message }),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setTimeout(() => {
+          setEmail('');
+          setMessage('');
+          setSubmitted(false);
+        }, 3000);
+      } else {
+        console.error('Failed to send email');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   };
 
   const socialLinks = [
@@ -31,7 +47,11 @@ export function Contact() {
         {/* Side by side: Connect card + Contact form */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-start">
           {/* Terminal Card - social links (narrower, 2 cols) */}
-          <div className="md:col-span-2 bg-[#0a0f0d]/85 backdrop-blur-xl border border-green-500/20 shadow-2xl shadow-green-900/20">
+          <div 
+            className={`md:col-span-2 bg-[#0a0f0d]/85 backdrop-blur-xl border border-green-500/20 shadow-2xl shadow-green-900/20 ${isHovered ? 'smoothGlow' : ''}`}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
             {/* Terminal title bar */}
             <div className="flex items-center gap-3 px-5 py-3 border-b border-green-500/10 bg-[#0a0f0d]/60">
               <div className="flex gap-2">
@@ -68,11 +88,11 @@ export function Contact() {
                     <a
                       key={link.name}
                       href={link.url}
-                      className="group flex items-center gap-3 font-mono text-sm text-gray-400 hover:text-green-400 transition-colors duration-200"
+                      className="group flex items-center gap-3 font-mono text-base text-gray-300 hover:text-green-400 transition-colors duration-200"
                     >
-                      <span className="text-green-400/50">→</span>
+                      <span className="text-green-400/30">→</span>
                       <span className="group-hover:text-green-300">{link.name}</span>
-                      <span className="text-gray-600">({link.icon})</span>
+                      <span className="text-gray-600/40">({link.icon})</span>
                     </a>
                   ))}
                 </div>
@@ -85,7 +105,7 @@ export function Contact() {
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Email input */}
               <div>
-                <label className="font-mono text-xs text-green-400 block mb-2">
+                <label className="font-mono text-s text-green-400 block mb-2">
                   /email
                 </label>
                 <input
@@ -100,13 +120,13 @@ export function Contact() {
 
               {/* Message input */}
               <div>
-                <label className="font-mono text-xs text-green-400 block mb-2">
+                <label className="font-mono text-s text-green-400 block mb-2">
                   /message
                 </label>
                 <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Your message here..."
+                  placeholder="Type your message here..."
                   rows={6}
                   className="w-full px-4 py-3 bg-[#0a0f0d]/50 backdrop-blur-sm border border-green-500/20 text-gray-200 placeholder-gray-600 font-mono text-sm focus:border-green-400 focus:outline-none focus:shadow-lg focus:shadow-green-500/20 transition-all duration-200 resize-none"
                   required
