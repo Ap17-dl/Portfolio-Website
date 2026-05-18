@@ -100,7 +100,7 @@ export function Contact() {
             </div>
           </div>
 
-          {/* Contact form (wider, 3 cols) */}
+          {/* Contact form  */}
           <div className="md:col-span-3">
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Email input */}
@@ -147,6 +147,7 @@ export function Contact() {
               {submitted && (
                 <p className="font-mono text-sm text-green-400 text-center">
                   ✓ Message sent successfully!
+                          Thank You
                 </p>
               )}
             </form>
