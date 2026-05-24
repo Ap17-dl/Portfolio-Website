@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -27,12 +28,21 @@ export function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        {/* Left side - terminal prompt */}
-        <div className="font-mono text-sm text-green-400 whitespace-nowrap">
-          <span className="text-white">ankushpratham</span>
-          <span className="text-gray-500">@portfolio</span>
-          <span className="text-gray-500">:~</span>
-          <span className="text-green-400">$</span>
+        {/* Left side - Logo */}
+        <div className="flex items-center gap-3">
+          <Image 
+            src="/logo.png" 
+            alt="AP Logo" 
+            width={40} 
+            height={40}
+            className="h-10 w-auto"
+          />
+          <div className="font-mono text-sm text-green-400 whitespace-nowrap hidden sm:flex">
+            <span className="text-white">ankushpratham</span>
+            <span className="text-gray-500">@portfolio</span>
+            <span className="text-gray-500">:~</span>
+            <span className="text-green-400">$</span>
+          </div>
         </div>
 
         {/* Center - Navigation */}

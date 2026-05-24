@@ -10,7 +10,10 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: 'Ankush Pratham',
-  description: 'AI/ML Engineer Portfolio Website'
+  description: 'AI/ML Engineer Portfolio Website',
+  icons: {
+    icon: '/logo.png',
+  }
 }
 
 export default function RootLayout({
