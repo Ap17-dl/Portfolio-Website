@@ -89,16 +89,16 @@ export function Projects() {
 
                 {/* Content */}
                 <div className={`space-y-4 flex flex-col flex-grow ${
-                  project.id > 2 ? 'p-8' : 'p-6'
+                  project.id > 0 ? 'p-8' : 'p-6'
                 }`}>
                   <div>
                     <h3 className={`font-mono text-green-400 mb-1 ${
-                      project.id > 2 ? 'text-2xl' : 'text-lg'
+                      project.id > 0 ? 'text-2xl' : 'text-lg'
                     }`}>
                       {project.title}
                     </h3>
                     <p className={`font-sans text-gray-400 leading-relaxed ${
-                      project.id > 2 ? 'text-base' : 'text-sm'
+                      project.id > 0 ? 'text-base' : 'text-sm'
                     }`}>
                       {project.description}
                     </p>
@@ -110,7 +110,7 @@ export function Projects() {
                       <span
                         key={tag}
                         className={`font-mono px-3 py-1 border border-gray-700/50 text-gray-400 group-hover:border-green-400/50 group-hover:text-green-400/80 transition-colors ${
-                          project.id > 2 ? 'text-sm' : 'text-xs'
+                          project.id > 0 ? 'text-sm' : 'text-xs'
                         }`}
                       >
                         [ #{tag.toLowerCase()} ]
