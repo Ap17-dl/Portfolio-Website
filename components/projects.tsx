@@ -23,7 +23,7 @@ const projects = [
   },
   {
     id: 3,
-    name: 'linkedin-for-artists',
+    name: 'in-progress',
     title: 'Repose',
     description: 'Real-time analytics dashboard with interactive charts, data visualization, and custom report generation.',
     tags: ['React', 'D3.js', 'Node.js', 'WebSocket'],
@@ -32,7 +32,7 @@ const projects = [
   },
   {
     id: 4,
-    name: 'investors-marketplace',
+    name: 'in-progress',
     title: 'Investors Marketplace',
     description: 'A modern investors marketplace platform designed to streamline startup funding, investor discovery, and business collaboration with intelligent insights.',
     tags: ['Full Stack', 'React', 'MongoDB', 'Machine Learning'],
