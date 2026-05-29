@@ -15,11 +15,11 @@ const projects = [
   {
     id: 2,
     name: 'farm-management',
-    title: 'Smart Farm Database Management',
+    title: 'Smart Farming Database',
     description: 'Full-stack e-commerce solution with real-time inventory, Stripe integration, and advanced search capabilities.',
     tags: ['Next.js', 'PostgreSQL', 'Stripe', 'Redis'],
-    demo: '#',
-    source: 'https://github.com/Ap17-dl/Smart-Farming-Database-Application',
+    demo: 'https://smart-farming-database.vercel.app/',
+    source: 'https://github.com/Ap17-dl/Smart-Farming-Database',
   },
   {
     id: 3,
