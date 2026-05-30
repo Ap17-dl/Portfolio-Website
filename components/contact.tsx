@@ -36,7 +36,7 @@ export function Contact() {
 
   const socialLinks = [
     { name: 'GitHub', url: 'https://github.com/Ap17-dl', icon: '$(github)' },
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/ankush-pratham-8447b5343/', icon: '$(linkedin)' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/ankush-pratham/', icon: '$(linkedin)' },
     { name: 'Twitter', url: 'https://x.com/ankush_pratham3', icon: '$(twitter)' },
     { name: 'Email', url: 'mailto:ankush170306@gmail.com', icon: '$(mail)' },
   ];
