@@ -62,12 +62,20 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Right side - System status */}
+        {/* Right side - System status (desktop) / site id (mobile) */}
         <div className="flex items-center gap-3 ml-auto">
-          <span className="font-mono text-xs text-gray-400">SYS_STATUS:</span>
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse glow"></div>
-            <span className="font-mono text-xs text-green-400">ONLINE</span>
+          {/* Mobile: show site id */}
+          <div className="font-mono text-sm text-green-400 md:hidden whitespace-nowrap truncate">
+            ankushpratham-portfolio
+          </div>
+
+          {/* Desktop: show system status */}
+          <div className="hidden md:flex items-center gap-3">
+            <span className="font-mono text-xs text-gray-400">SYS_STATUS:</span>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse glow"></div>
+              <span className="font-mono text-xs text-green-400">ONLINE</span>
+            </div>
           </div>
         </div>
       </div>
