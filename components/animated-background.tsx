@@ -105,14 +105,6 @@ export function AnimatedBackground() {
       ctx.arc(cursorX, cursorY, 120, 0, Math.PI * 2);
       ctx.fill();
 
-      // Pulsing ring around cursor
-      const pulse = Math.sin(frameRef.current * 0.04) * 4 + 12;
-      ctx.strokeStyle = 'rgba(0, 255, 65, 0.15)';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.arc(cursorX, cursorY, pulse, 0, Math.PI * 2);
-      ctx.stroke();
-
       frameRef.current++;
       rafRef.current = requestAnimationFrame(drawOverlay);
     };

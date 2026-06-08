@@ -4,7 +4,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center border-b border-[#21262d] px-4 relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center border-b border-[#21262d] px-10 relative overflow-hidden"
     >
       {/* Terminal Card */}
       <div className="max-w-3xl w-full z-10">
@@ -38,7 +38,7 @@ export function Hero() {
                 AI/ML Engineer passionate about building scalable intelligent systems that create meaningful real-world impact.  
                 </p>
 
-                <p className="font-sans text-lg leading-relaxed text-gray-300">
+                <p className="font-sans text-lg leading-relaxed text-gray-200">
                   With a strong foundation in Machine Learning, Data Structures, and software development, 
                   I focus on creating efficient models and impactful AI applications across domains like finance, healthcare, and predictive analytics.
                 </p>
@@ -49,7 +49,7 @@ export function Hero() {
               </div>
 
               {/* Cursor animation */}
-              <div className="font-mono text-lg text-green-400 h-8 flex items-center">
+              <div className="font-mono text-lg text-green-400 h-5 flex items-center">
                 <span className="cursor">_</span>
               </div>
             </div>

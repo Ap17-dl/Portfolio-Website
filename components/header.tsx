@@ -38,7 +38,7 @@ export function Header() {
             className="h-10 w-auto"
           />
           <div className="font-mono text-sm text-green-400 whitespace-nowrap hidden sm:flex">
-            <span className="text-white">ankushpratham</span>
+            <span className="text-green">ankushpratham</span>
             <span className="text-gray-500">@portfolio</span>
             <span className="text-gray-500">:~</span>
             <span className="text-green-400">$</span>
