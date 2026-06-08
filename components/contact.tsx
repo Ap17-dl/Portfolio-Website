@@ -6,10 +6,24 @@ export function Contact() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
   const [isHovered, setIsHovered] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMsg('');
+    setSubmitted(false);
+
+    // Email regex check
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setEmail('');
+      setErrorMsg('enter a valid email address');
+      return;
+    }
+
+    setIsSubmitting(true);
     try {
       const response = await fetch('/api/send-email', {
         method: 'POST',
@@ -21,16 +35,20 @@ export function Contact() {
 
       if (response.ok) {
         setSubmitted(true);
+        setEmail('');
+        setMessage('');
         setTimeout(() => {
-          setEmail('');
-          setMessage('');
           setSubmitted(false);
-        }, 3000);
+        }, 5000);
       } else {
-        console.error('Failed to send email');
+        const data = await response.json().catch(() => ({}));
+        setErrorMsg(data.error || 'Failed to send email');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
+      setErrorMsg('Error submitting form');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -115,6 +133,7 @@ export function Contact() {
                   placeholder="your.email@example.com"
                   className="w-full px-4 py-3 bg-[#0a0f0d]/50 backdrop-blur-sm border border-green-500/20 text-gray-200 placeholder-gray-600 font-mono text-sm focus:border-green-400 focus:outline-none focus:shadow-lg focus:shadow-green-500/20 transition-all duration-200"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -130,24 +149,38 @@ export function Contact() {
                   rows={6}
                   className="w-full px-4 py-3 bg-[#0a0f0d]/50 backdrop-blur-sm border border-green-500/20 text-gray-200 placeholder-gray-600 font-mono text-sm focus:border-green-400 focus:outline-none focus:shadow-lg focus:shadow-green-500/20 transition-all duration-200 resize-none"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
               {/* Submit button */}
               <button
                 type="submit"
-                className="w-full font-mono text-sm px-6 py-3 border border-green-500 text-green-400 hover:bg-green-500/10 hover:shadow-lg hover:shadow-green-500/50 transition-all duration-200 group backdrop-blur-sm bg-[#0a0f0d]/40"
+                disabled={isSubmitting}
+                className="w-full font-mono text-sm px-6 py-3 border border-green-500 text-green-400 hover:bg-green-500/10 hover:shadow-lg hover:shadow-green-500/50 transition-all duration-200 group backdrop-blur-sm bg-[#0a0f0d]/40 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:shadow-none"
               >
                 <span className="group-hover:text-green-300">
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity">&gt; </span>[ SEND_MESSAGE ]
+                  {isSubmitting ? (
+                    <span>[ SENDING... ]</span>
+                  ) : (
+                    <>
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity">&gt; </span>[ SEND_MESSAGE ]
+                    </>
+                  )}
                 </span>
               </button>
 
               {/* Success message */}
               {submitted && (
                 <p className="font-mono text-sm text-green-400 text-center">
-                  ✓ Message sent successfully!
-                          Thank You
+                  ✓ mail sent
+                </p>
+              )}
+
+              {/* Error message */}
+              {errorMsg && (
+                <p className="font-mono text-sm text-red-400 text-center">
+                  ✗ {errorMsg}
                 </p>
               )}
             </form>
