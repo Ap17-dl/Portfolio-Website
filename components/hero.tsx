@@ -8,9 +8,9 @@ export function Hero() {
     >
       {/* Terminal Card */}
       <div className="max-w-3xl w-full z-10">
-        <div className="bg-[#0a0f0d]/85 backdrop-blur-xl border border-green-500/20 shadow-2xl shadow-green-900/20">
+        <div className="glass-terminal glass-terminal-hover overflow-hidden">
           {/* Terminal title bar */}
-          <div className="flex items-center gap-3 px-5 py-3 border-b border-green-500/10 bg-[#0a0f0d]/60">
+          <div className="flex items-center gap-3 px-5 py-3 border-b border-green-500/10 bg-white/[0.02] backdrop-blur-md">
             <div className="flex gap-2">
               <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
               <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
@@ -60,7 +60,7 @@ export function Hero() {
         <div className="flex flex-wrap gap-4 mt-6">
           <a
             href="#projects"
-            className="font-mono text-sm px-6 py-3 border border-green-500 text-green-400 hover:bg-green-500/10 hover:shadow-lg hover:shadow-green-500/50 transition-all duration-200 group whitespace-nowrap backdrop-blur-sm bg-[#0a0f0d]/40"
+            className="font-mono text-sm px-6 py-3 border border-green-500/30 text-green-400 hover:border-green-400 hover:bg-green-500/10 hover:shadow-[0_0_20px_rgba(0,255,102,0.15)] transition-all duration-300 group whitespace-nowrap backdrop-blur-sm bg-gradient-to-br from-green-950/10 to-transparent"
           >
             <span className="group-hover:text-green-300">
               <span className="opacity-0 group-hover:opacity-100 transition-opacity">&gt; </span>[ VIEW_WORK ]
@@ -68,7 +68,7 @@ export function Hero() {
           </a>
           <a
             href="#contact"
-            className="font-mono text-sm px-6 py-3 border border-gray-600 text-gray-400 hover:border-green-500 hover:text-green-400 hover:shadow-lg hover:shadow-green-500/30 transition-all duration-200 group whitespace-nowrap backdrop-blur-sm bg-[#0a0f0d]/40"
+            className="font-mono text-sm px-6 py-3 border border-gray-700/50 text-gray-400 hover:border-green-500 hover:text-green-400 hover:shadow-[0_0_20px_rgba(0,255,102,0.1)] transition-all duration-300 group whitespace-nowrap backdrop-blur-sm bg-gradient-to-br from-white/[0.01] to-transparent"
           >
             <span className="group-hover:text-green-300">
               <span className="opacity-0 group-hover:opacity-100 transition-opacity">&gt; </span>[ GET_IN_TOUCH ]

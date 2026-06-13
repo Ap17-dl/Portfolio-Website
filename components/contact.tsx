@@ -66,12 +66,12 @@ export function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-start">
           {/* Terminal Card - social links (narrower, 2 cols) */}
           <div 
-            className={`md:col-span-2 bg-[#0a0f0d]/85 backdrop-blur-xl border border-green-500/20 shadow-2xl shadow-green-900/20 ${isHovered ? 'smoothGlow' : ''}`}
+            className="md:col-span-2 glass-terminal glass-terminal-hover overflow-hidden"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
             {/* Terminal title bar */}
-            <div className="flex items-center gap-3 px-5 py-3 border-b border-green-500/10 bg-[#0a0f0d]/60">
+            <div className="flex items-center gap-3 px-5 py-3 border-b border-green-500/10 bg-white/[0.02] backdrop-blur-md">
               <div className="flex gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
@@ -119,71 +119,83 @@ export function Contact() {
           </div>
 
           {/* Contact form  */}
-          <div className="md:col-span-3">
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Email input */}
-              <div>
-                <label className="font-mono text-s text-green-400 block mb-2">
-                  /email
-                </label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="your.email@example.com"
-                  className="w-full px-4 py-3 bg-[#0a0f0d]/50 backdrop-blur-sm border border-green-500/20 text-gray-200 placeholder-gray-600 font-mono text-sm focus:border-green-400 focus:outline-none focus:shadow-lg focus:shadow-green-500/20 transition-all duration-200"
-                  required
-                  disabled={isSubmitting}
-                />
+          <div className="md:col-span-3 glass-terminal glass-terminal-hover overflow-hidden">
+            {/* Terminal title bar */}
+            <div className="flex items-center gap-3 px-5 py-3 border-b border-green-500/10 bg-white/[0.02] backdrop-blur-md">
+              <div className="flex gap-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
               </div>
+              <span className="font-mono text-xs text-gray-500 ml-2">~/portfolio/message</span>
+            </div>
 
-              {/* Message input */}
-              <div>
-                <label className="font-mono text-s text-green-400 block mb-2">
-                  /message
-                </label>
-                <textarea
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Type your message here..."
-                  rows={6}
-                  className="w-full px-4 py-3 bg-[#0a0f0d]/50 backdrop-blur-sm border border-green-500/20 text-gray-200 placeholder-gray-600 font-mono text-sm focus:border-green-400 focus:outline-none focus:shadow-lg focus:shadow-green-500/20 transition-all duration-200 resize-none"
-                  required
+            <div className="p-6 md:p-8">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Email input */}
+                <div>
+                  <label className="font-mono text-xs text-green-400 block mb-2">
+                    /email
+                  </label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="your.email@example.com"
+                    className="w-full px-4 py-3 glass-input text-gray-200 placeholder-gray-600 font-mono text-sm focus:outline-none transition-all duration-200"
+                    required
+                    disabled={isSubmitting}
+                  />
+                </div>
+
+                {/* Message input */}
+                <div>
+                  <label className="font-mono text-xs text-green-400 block mb-2">
+                    /message
+                  </label>
+                  <textarea
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Type your message here..."
+                    rows={6}
+                    className="w-full px-4 py-3 glass-input text-gray-200 placeholder-gray-600 font-mono text-sm focus:outline-none transition-all duration-200 resize-none"
+                    required
+                    disabled={isSubmitting}
+                  />
+                </div>
+
+                {/* Submit button */}
+                <button
+                  type="submit"
                   disabled={isSubmitting}
-                />
-              </div>
+                  className="w-full font-mono text-sm px-6 py-3 border border-green-500/30 text-green-400 hover:border-green-400 hover:bg-green-500/10 hover:shadow-[0_0_20px_rgba(0,255,102,0.15)] transition-all duration-300 group backdrop-blur-sm bg-gradient-to-br from-green-950/10 to-transparent disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:shadow-none"
+                >
+                  <span className="group-hover:text-green-300">
+                    {isSubmitting ? (
+                      <span>[ SENDING... ]</span>
+                    ) : (
+                      <>
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity">&gt; </span>[ SEND_MESSAGE ]
+                      </>
+                    )}
+                  </span>
+                </button>
 
-              {/* Submit button */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full font-mono text-sm px-6 py-3 border border-green-500 text-green-400 hover:bg-green-500/10 hover:shadow-lg hover:shadow-green-500/50 transition-all duration-200 group backdrop-blur-sm bg-[#0a0f0d]/40 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:shadow-none"
-              >
-                <span className="group-hover:text-green-300">
-                  {isSubmitting ? (
-                    <span>[ SENDING... ]</span>
-                  ) : (
-                    <>
-                      <span className="opacity-0 group-hover:opacity-100 transition-opacity">&gt; </span>[ SEND_MESSAGE ]
-                    </>
-                  )}
-                </span>
-              </button>
+                {/* Success message */}
+                {submitted && (
+                  <p className="font-mono text-sm text-green-400 text-center mt-2 animate-pulse">
+                    ✓ mail sent
+                  </p>
+                )}
 
-              {/* Success message */}
-              {submitted && (
-                <p className="font-mono text-sm text-green-400 text-center">
-                  ✓ mail sent
-                </p>
-              )}
-
-              {/* Error message */}
-              {errorMsg && (
-                <p className="font-mono text-sm text-red-400 text-center">
-                  ✗ {errorMsg}
-                </p>
-              )}
-            </form>
+                {/* Error message */}
+                {errorMsg && (
+                  <p className="font-mono text-sm text-red-400 text-center mt-2">
+                    ✗ {errorMsg}
+                  </p>
+                )}
+              </form>
+            </div>
           </div>
         </div>
       </div>

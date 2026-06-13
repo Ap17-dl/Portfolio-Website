@@ -69,14 +69,10 @@ export function Projects() {
             >
               {/* Project card */}
               <div
-                className={`border transition-all duration-200 overflow-hidden bg-[#0a0f0d]/80 backdrop-blur-xl flex flex-col h-full ${
-                  hoveredId === project.id
-                    ? 'border-green-400 shadow-lg shadow-green-500/50 glow'
-                    : 'border-green-500/20 hover:border-green-500/40'
-                }`}
+                className="glass-terminal glass-terminal-hover overflow-hidden flex flex-col h-full"
               >
                 {/* Terminal header */}
-                <div className="bg-[#0a0f0d]/60 border-b border-green-500/10 px-3 md:px-4 py-2 md:py-3 flex items-center gap-2 md:gap-3 min-h-fit">
+                <div className="bg-white/[0.02] border-b border-green-500/10 px-3 md:px-4 py-2 md:py-3 flex items-center gap-2 md:gap-3 min-h-fit backdrop-blur-md">
                   <div className="flex gap-1.5 md:gap-2">
                     <div className="w-2 h-2 rounded-full bg-red-500"></div>
                     <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
@@ -103,7 +99,7 @@ export function Projects() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="font-mono px-2 md:px-3 py-1 border border-gray-700/50 text-xs md:text-sm text-gray-400 group-hover:border-green-400/50 group-hover:text-green-400/80 transition-colors"
+                        className="font-mono px-2 md:px-3 py-1 border border-gray-700/50 bg-white/[0.01] text-xs md:text-sm text-gray-400 group-hover:border-green-400/50 group-hover:text-green-400/80 transition-colors"
                       >
                         [ #{tag.toLowerCase()} ]
                       </span>
@@ -114,7 +110,7 @@ export function Projects() {
                   <div className="flex flex-col md:flex-row gap-2 md:gap-3 pt-2 md:pt-4 mt-auto">
                     <a
                       href={project.demo}
-                      className="flex-1 font-mono px-3 md:px-4 py-2 md:py-3 border border-green-500 text-green-400 hover:bg-green-500/10 transition-all duration-200 group text-center text-xs md:text-sm"
+                      className="flex-1 font-mono px-3 md:px-4 py-2 md:py-3 border border-green-500/30 text-green-400 hover:border-green-400 hover:bg-green-500/10 hover:shadow-[0_0_20px_rgba(0,255,102,0.15)] transition-all duration-300 group text-center text-xs md:text-sm backdrop-blur-sm bg-gradient-to-br from-green-950/10 to-transparent"
                     >
                       <span className="group-hover:text-green-300">
                         <span className="opacity-0 group-hover:opacity-100 transition-opacity">&gt; </span>[ RUN_DEMO ]
@@ -122,7 +118,7 @@ export function Projects() {
                     </a>
                     <a
                       href={project.source}
-                      className="flex-1 font-mono px-3 md:px-4 py-2 md:py-3 border border-gray-700 text-gray-400 hover:border-green-500 hover:text-green-400 transition-all duration-200 group text-center text-xs md:text-sm"
+                      className="flex-1 font-mono px-3 md:px-4 py-2 md:py-3 border border-gray-700/50 text-gray-400 hover:border-green-500 hover:text-green-400 hover:shadow-[0_0_20px_rgba(0,255,102,0.1)] transition-all duration-300 group text-center text-xs md:text-sm backdrop-blur-sm bg-gradient-to-br from-white/[0.01] to-transparent"
                     >
                       <span className="group-hover:text-green-300">
                         <span className="opacity-0 group-hover:opacity-100 transition-opacity">&gt; </span>[ VIEW_SOURCE ]

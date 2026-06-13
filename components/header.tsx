@@ -23,8 +23,8 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'border-b border-green-600/30 bg-[#0a0f0d]/80 backdrop-blur-lg'
-          : 'border-b border-[#21262d] bg-[#0a0f0d]/40 backdrop-blur-sm'
+          ? 'border-b border-green-500/15 bg-[#0a0f0d]/45 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(0,255,102,0.05)]'
+          : 'border-b border-white/[0.02] bg-[#0a0f0d]/20 backdrop-blur-sm'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
