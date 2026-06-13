@@ -213,22 +213,22 @@
 
 @keyframes glassGlowBreath {
   0% {
-    border-color: rgba(0, 255, 102, 0.55) !important;
+    border-color: rgba(0, 255, 102, 0.65) !important;
     box-shadow: 
-      0 25px 55px rgba(0, 0, 0, 0.85), 
-      0 0 8px rgba(0, 255, 102, 0.3),             /* Tight border glow */
-      0 0 25px rgba(0, 255, 102, 0.12),            /* Wide outer glow */
-      inset 0 0 6px rgba(0, 255, 102, 0.25),        /* Inner border glow */
-      inset 0 1px 1px rgba(255, 255, 255, 0.12) !important;
+      0 20px 45px rgba(0, 0, 0, 0.85), 
+      0 0 8px 1px rgba(0, 255, 102, 0.4),            /* Tight border glow with 1px spread */
+      0 0 22px 3px rgba(0, 255, 102, 0.15),           /* Wide outer glow with 3px spread */
+      inset 0 0 6px rgba(0, 255, 102, 0.25),          /* Inner edge glow */
+      inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
   }
   100% {
     border-color: rgba(0, 255, 102, 0.95) !important;
     box-shadow: 
-      0 25px 55px rgba(0, 0, 0, 0.85), 
-      0 0 15px rgba(0, 255, 102, 0.65),           /* Tight border glow expands */
-      0 0 45px rgba(0, 255, 102, 0.28),            /* Wide outer glow expands */
-      inset 0 0 12px rgba(0, 255, 102, 0.48),       /* Inner border glow expands */
-      inset 0 1px 1px rgba(255, 255, 255, 0.22) !important;
+      0 20px 45px rgba(0, 0, 0, 0.85), 
+      0 0 16px 3px rgba(0, 255, 102, 0.75),           /* Expanded tight border glow with 3px spread */
+      0 0 38px 6px rgba(0, 255, 102, 0.3),            /* Expanded outer glow with 6px spread */
+      inset 0 0 12px rgba(0, 255, 102, 0.5),           /* Expanded inner edge glow */
+      inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
   }
 }
 
