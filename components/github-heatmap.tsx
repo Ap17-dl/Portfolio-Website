@@ -39,7 +39,7 @@ export function GithubHeatmap() {
   return (
     <div 
       ref={containerRef}
-      className="glass-terminal glass-terminal-hover w-full rounded-none relative overflow-hidden select-none animate-fadeIn"
+      className="glass-terminal glass-terminal-hover w-full rounded-none relative select-none animate-fadeIn"
     >
       <div 
         className="absolute inset-0 pointer-events-none z-20"
