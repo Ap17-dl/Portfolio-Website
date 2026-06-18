@@ -79,9 +79,9 @@ export function GithubHeatmap() {
       <div className="p-5 md:p-6">
         <div 
           ref={scrollContainerRef}
-          className="w-full overflow-x-auto lg:overflow-x-visible pb-2 flex justify-end lg:justify-center [&_svg]:w-full [&_svg]:h-auto"
+          className="w-full overflow-x-auto lg:overflow-x-visible pb-2 flex justify-end sm:justify-center [&_svg]:w-full [&_svg]:h-auto"
         >
-          <div className="w-full min-w-[450px] pr-2 flex justify-end lg:justify-center">
+          <div className="w-full min-w-[450px] pr-2 flex justify-end sm:justify-center">
             {mounted ? (
               <GitHubCalendar
                 username="Ap17-dl"
