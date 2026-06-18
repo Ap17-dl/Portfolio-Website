@@ -5,6 +5,7 @@ import { GitHubCalendar } from 'react-github-calendar';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function GithubHeatmap() {
+  const [mounted, setMounted] = useState(false);
   const [totalCount, setTotalCount] = useState<number | null>(null);
   const [hoveredCell, setHoveredCell] = useState<{
     date: string;
@@ -17,8 +18,8 @@ export function GithubHeatmap() {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // Fetch the total contributions count dynamically from Deno API for Ap17-dl
   useEffect(() => {
+    setMounted(true);
     const fetchCount = async () => {
       try {
         const res = await fetch('https://github-contributions-api.deno.dev/Ap17-dl.json');
@@ -29,7 +30,7 @@ export function GithubHeatmap() {
         }
       } catch (err) {
         console.warn('Failed to fetch contributions count, using fallback', err);
-        setTotalCount(187); // fallback default
+        setTotalCount(187); 
       }
     };
     fetchCount();
@@ -40,7 +41,6 @@ export function GithubHeatmap() {
       ref={containerRef}
       className="glass-terminal glass-terminal-hover w-full rounded-none relative overflow-hidden select-none animate-fadeIn"
     >
-      {/* CRT Scanline Overlay */}
       <div 
         className="absolute inset-0 pointer-events-none z-20"
         style={{
@@ -50,9 +50,7 @@ export function GithubHeatmap() {
         }}
       />
 
-      {/* Unified Panel Header Bar */}
       <div className="flex items-center gap-3 px-5 py-2.5 border-b border-green-500/10 bg-white/[0.02] backdrop-blur-md">
-        {/* Window Control Dots */}
         <div className="flex gap-1.5">
           <div className="w-2 h-2 rounded-full bg-red-500/80"></div>
           <div className="w-2 h-2 rounded-full bg-yellow-500/80"></div>
@@ -67,65 +65,64 @@ export function GithubHeatmap() {
         </div>
       </div>
 
-      {/* Card Content */}
       <div className="p-5 md:p-6">
-        {/* Calendar Viewport - Scaled down to fit full year without side scroll */}
         <div className="w-full overflow-x-auto lg:overflow-x-visible pb-2 flex justify-center [&_svg]:w-full [&_svg]:h-auto">
           <div className="w-full min-w-[450px] pr-2 flex justify-center">
-            <GitHubCalendar
-              username="Ap17-dl"
-              colorScheme="dark"
-              theme={{
-                dark: ['#111815', '#0E4429', '#006D32', '#00C37A', '#00FF9C'],
-              }}
-              style={{
-                fontFamily: 'var(--font-mono), monospace',
-                fontSize: '9px',
-                color: '#8B8B8B',
-              }}
-              blockSize={8.5}
-              blockMargin={2}
-              fontSize={9}
-              showTotalCount={false}
-              showColorLegend={false}
-              showWeekdayLabels={false}
-              renderBlock={(block, activity) => {
-                return React.cloneElement(block, {
-                  onMouseEnter: (e: React.MouseEvent<SVGElement>) => {
-                    const rect = e.currentTarget.getBoundingClientRect();
-                    if (containerRef.current) {
-                      const containerRect = containerRef.current.getBoundingClientRect();
-                      setHoveredCell({
-                        date: activity.date,
-                        count: activity.count,
-                        level: activity.level,
-                        x: rect.left - containerRect.left + rect.width / 2,
-                        y: rect.top - containerRect.top - 8,
-                      });
+            {mounted ? (
+              <GitHubCalendar
+                username="Ap17-dl"
+                colorScheme="dark"
+                theme={{
+                  dark: ['#111815', '#0E4429', '#006D32', '#00C37A', '#00FF9C'],
+                }}
+                style={{
+                  fontFamily: 'var(--font-mono), monospace',
+                  fontSize: '9px',
+                  color: '#8B8B8B',
+                }}
+                blockSize={8.5}
+                blockMargin={2}
+                fontSize={9}
+                showTotalCount={false}
+                showColorLegend={false}
+                showWeekdayLabels={false}
+                renderBlock={(block, activity) => {
+                  return React.cloneElement(block, {
+                    onMouseEnter: (e: React.MouseEvent<SVGElement>) => {
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      if (containerRef.current) {
+                        const containerRect = containerRef.current.getBoundingClientRect();
+                        setHoveredCell({
+                          date: activity.date,
+                          count: activity.count,
+                          level: activity.level,
+                          x: rect.left - containerRect.left + rect.width / 2,
+                          y: rect.top - containerRect.top - 8,
+                        });
+                      }
+                    },
+                    onMouseLeave: () => {
+                      setHoveredCell(null);
+                    },
+                    style: {
+                      cursor: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'><circle cx='4' cy='4' r='2.5' fill='%2300FF9C' stroke='%23090d0b' stroke-width='0.5'/></svg>") 4 4, pointer`,
+                      transition: 'all 0.12s ease-in-out',
                     }
-                  },
-                  onMouseLeave: () => {
-                    setHoveredCell(null);
-                  },
-                  style: {
-                    // Custom tiny glowing dot cursor to prevent overlapping cells
-                    cursor: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'><circle cx='4' cy='4' r='2.5' fill='%2300FF9C' stroke='%23090d0b' stroke-width='0.5'/></svg>") 4 4, pointer`,
-                    transition: 'all 0.12s ease-in-out',
-                  }
-                } as any);
-              }}
-            />
+                  } as any);
+                }}
+              />
+            ) : (
+              <div className="h-[95px] w-full bg-transparent" />
+            )}
           </div>
         </div>
 
-        {/* Bottom Info Row (Left: Total Count, Right: Legend) */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mt-3 pt-2 border-t border-green-500/5">
           {/* Total count on bottom left */}
           <span className="font-mono text-xs text-[#8B8B8B] select-text">
             {totalCount !== null ? totalCount : '187'} contributions in the last year
           </span>
 
-          {/* Legend block on bottom right */}
           <div className="flex items-center gap-1.5 text-xs text-[#8B8B8B] font-mono">
             <span>Less</span>
             <span className="w-2.5 h-2.5 rounded-[1.5px] border border-black/10" style={{ backgroundColor: '#111815' }} />
@@ -138,7 +135,6 @@ export function GithubHeatmap() {
         </div>
       </div>
 
-      {/* Custom styled Tooltip - Rounded Capsule matching green theme */}
       <AnimatePresence>
         {hoveredCell && (
           <motion.div
@@ -162,7 +158,6 @@ export function GithubHeatmap() {
                 </>
               )}
             </span>
-            {/* Small Down-Pointing Arrow */}
             <div 
               className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[4px] border-t-green-500/20"
             />
