@@ -36,6 +36,17 @@ export function GithubHeatmap() {
     fetchCount();
   }, []);
 
+  useEffect(() => {
+    if (mounted && scrollContainerRef.current) {
+      const timer = setTimeout(() => {
+        if (scrollContainerRef.current) {
+          scrollContainerRef.current.scrollLeft = scrollContainerRef.current.scrollWidth;
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [mounted]);
+
   return (
     <div 
       ref={containerRef}
@@ -66,8 +77,11 @@ export function GithubHeatmap() {
       </div>
 
       <div className="p-5 md:p-6">
-        <div className="w-full overflow-x-auto lg:overflow-x-visible pb-2 flex justify-center [&_svg]:w-full [&_svg]:h-auto">
-          <div className="w-full min-w-[450px] pr-2 flex justify-center">
+        <div 
+          ref={scrollContainerRef}
+          className="w-full overflow-x-auto lg:overflow-x-visible pb-2 flex justify-end lg:justify-center [&_svg]:w-full [&_svg]:h-auto"
+        >
+          <div className="w-full min-w-[450px] pr-2 flex justify-end lg:justify-center">
             {mounted ? (
               <GitHubCalendar
                 username="Ap17-dl"

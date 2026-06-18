@@ -50,7 +50,7 @@ export function Hero() {
             initial={{ opacity: 0, x: -25 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full lg:w-[55%] flex flex-col justify-center order-2 lg:order-1"
+            className="w-full lg:w-[55%] flex flex-col justify-center order-1"
           >
             <div className="glass-terminal glass-terminal-hover overflow-hidden">
               <div className="flex items-center gap-3 px-5 py-3 border-b border-green-500/10 bg-white/[0.02] backdrop-blur-md">
@@ -128,7 +128,7 @@ export function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
-            className="w-full lg:w-[45%] flex flex-col gap-5 relative order-1 lg:order-2"
+            className="w-full lg:w-[45%] flex flex-col gap-5 relative order-2"
           >
             <div className="glass-terminal overflow-hidden rounded-none relative w-full">
               <div className="flex items-center gap-3 px-5 py-2.5 border-b border-green-500/10 bg-white/[0.02] backdrop-blur-md">
