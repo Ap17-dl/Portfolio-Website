@@ -168,7 +168,7 @@ export function AnimatedBackground() {
 
   return (
     <div 
-      className="fixed inset-0 z-0 bg-[#020403]"
+      className="fixed inset-0 z-0 bg-[#050505]"
       style={{
         backgroundImage: `
           radial-gradient(circle at 15% 20%, rgba(0, 255, 102, 0.025) 0%, transparent 45%),
