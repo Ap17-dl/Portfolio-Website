@@ -5,6 +5,10 @@ import { Header } from '@/components/header';
 import { Hero } from '@/components/hero';
 
 // Lazy load components below the fold for better initial load performance
+const Experience = dynamic(() => import('@/components/experience').then(mod => ({ default: mod.Experience })), {
+  loading: () => null,
+});
+
 const Projects = dynamic(() => import('@/components/projects').then(mod => ({ default: mod.Projects })), {
   loading: () => null,
 });
@@ -38,6 +42,7 @@ export default function Home(): JSX.Element {
       <Header />
       <div className="pt-16">
         <Hero />
+        <Experience />
         <Projects />
         <Contact />
         <Footer />
