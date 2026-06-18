@@ -75,7 +75,7 @@ export function SystemStatus() {
   ];
 
   return (
-    <div className="glass-terminal glass-terminal-hover relative overflow-hidden rounded-none p-5 md:p-6 w-full select-none">
+    <div className="glass-terminal glass-terminal-hover relative overflow-hidden rounded-none w-full select-none">
       {/* CRT Scanline Overlay */}
       <div 
         className="absolute inset-0 pointer-events-none z-20"
@@ -86,22 +86,26 @@ export function SystemStatus() {
         }}
       />
 
-      {/* Terminal Title Bar */}
-      <div className="flex items-center justify-between border-b border-green-500/10 pb-3 mb-5">
-        <div className="flex items-center gap-2">
-          <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-ping"></div>
-          <span className="font-mono text-[10px] tracking-widest text-green-400 font-semibold uppercase">
-            [SYS_MONITOR_v1.0.8]
-          </span>
+      {/* Terminal Title Bar (Edge-to-edge) */}
+      <div className="flex items-center gap-3 px-5 py-2.5 border-b border-green-500/10 bg-white/[0.02] backdrop-blur-md">
+        {/* Window Control Dots */}
+        <div className="flex gap-1.5">
+          <div className="w-2 h-2 rounded-full bg-red-500/80"></div>
+          <div className="w-2 h-2 rounded-full bg-yellow-500/80"></div>
+          <div className="w-2 h-2 rounded-full bg-green-500/80"></div>
         </div>
-        <div className="flex items-center gap-1.5 font-mono text-[9px] text-gray-500">
-          <span className="w-1 h-1 bg-green-500/30 rounded-full"></span>
+        <span className="font-mono text-[9px] md:text-[10px] text-gray-500 uppercase tracking-widest font-semibold ml-1">
+          [SYS_MONITOR_V1.0.8]
+        </span>
+        <div className="ml-auto flex gap-1.5 items-center font-mono text-[9px] text-gray-500">
+          <span className="w-1.5 h-1.5 rounded-full bg-green-500/40 animate-pulse"></span>
           <span>SYS: CALIBRATED</span>
         </div>
       </div>
 
-      {/* Terminal Rows */}
-      <div className="space-y-4 md:space-y-5">
+      {/* Terminal Body content (with padding) */}
+      <div className="p-5 md:p-6">
+        <div className="space-y-4 md:space-y-5">
         {items.map((item, idx) => {
           const isRowVisible = visibleRows >= idx;
           const isRowTyping = typingIndex === idx;
@@ -198,5 +202,6 @@ export function SystemStatus() {
         })}
       </div>
     </div>
-  );
+  </div>
+);
 }

@@ -29,7 +29,6 @@ export function AnimatedBackground() {
     let targetCursorX = -1000;
     let targetCursorY = -1000;
 
-    // Detect mobile viewport
     const isMobile = () => window.innerWidth < 768;
 
     const resize = () => {
@@ -43,10 +42,10 @@ export function AnimatedBackground() {
       const starCount = isMobile() ? 45 : 120;
       
       const starColors = [
-        'rgba(255, 255, 255, 0.9)',     // Pure White
-        'rgba(230, 245, 255, 0.85)',    // Faint Blue-White
-        'rgba(235, 255, 240, 0.85)',    // Faint Green-White
-        'rgba(180, 255, 210, 0.75)',    // Soft Neon Green
+        'rgba(255, 255, 255, 0.9)',  
+        'rgba(230, 245, 255, 0.85)', 
+        'rgba(235, 255, 240, 0.85)', 
+        'rgba(180, 255, 210, 0.75)', 
       ];
 
       for (let i = 0; i < starCount; i++) {
@@ -54,7 +53,7 @@ export function AnimatedBackground() {
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           size: Math.random() * 1.5 + 0.4,
-          speed: Math.random() * 0.08 + 0.02, // ultra slow drift
+          speed: Math.random() * 0.08 + 0.02, 
           phase: Math.random() * Math.PI * 2,
           twinkleSpeed: Math.random() * 0.015 + 0.005,
           color: starColors[Math.floor(Math.random() * starColors.length)],
@@ -65,18 +64,15 @@ export function AnimatedBackground() {
     window.addEventListener('resize', resize);
     resize();
 
-    // Mouse movement listener
     const onMouseMove = (e: MouseEvent) => {
       targetCursorX = e.clientX;
       targetCursorY = e.clientY;
-      // If first move, instantly snap
       if (cursorX === -1000) {
         cursorX = targetCursorX;
         cursorY = targetCursorY;
       }
     };
 
-    // Handle mouse leaving window
     const onMouseLeave = () => {
       targetCursorX = -1000;
       targetCursorY = -1000;
@@ -88,15 +84,12 @@ export function AnimatedBackground() {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // 1. Draw Starfield
       for (let i = 0; i < stars.length; i++) {
         const star = stars[i];
 
-        // Twinkle factor using a smooth sine wave
         star.phase += star.twinkleSpeed;
         const currentOpacity = 0.35 + 0.65 * Math.abs(Math.sin(star.phase));
 
-        // Draw star
         ctx.fillStyle = star.color.replace('0.9', currentOpacity.toString())
                                   .replace('0.85', (currentOpacity * 0.9).toString())
                                   .replace('0.75', (currentOpacity * 0.8).toString());
@@ -104,11 +97,9 @@ export function AnimatedBackground() {
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
         ctx.fill();
 
-        // Update star position (drift down and left)
         star.x -= star.speed;
         star.y += star.speed * 0.4;
 
-        // Reset if star drifts off bounds
         if (star.x < -2) {
           star.x = canvas.width + 2;
           star.y = Math.random() * canvas.height;
@@ -119,12 +110,9 @@ export function AnimatedBackground() {
         }
       }
 
-      // 2. Interpolate cursor position for smooth lag effect
       if (targetCursorX !== -1000) {
         cursorX += (targetCursorX - cursorX) * 0.08;
         cursorY += (targetCursorY - cursorY) * 0.08;
-
-        // Draw Cursor Glow
         const glow = ctx.createRadialGradient(
           cursorX, cursorY, 0,
           cursorX, cursorY, 130
@@ -137,12 +125,10 @@ export function AnimatedBackground() {
         ctx.arc(cursorX, cursorY, 130, 0, Math.PI * 2);
         ctx.fill();
       } else {
-        // Slowly fade cursor out or pull off-screen
         cursorX = -1000;
         cursorY = -1000;
       }
 
-      // 3. Draw Scanlines (CRT retro effect)
       ctx.strokeStyle = 'rgba(0, 255, 102, 0.012)';
       ctx.lineWidth = 1;
       const step = 4;

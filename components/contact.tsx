@@ -15,7 +15,6 @@ export function Contact() {
     setErrorMsg('');
     setSubmitted(false);
 
-    // Email regex check
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setEmail('');
@@ -62,15 +61,12 @@ export function Contact() {
   return (
     <section id="contact" className="min-h-screen flex items-center justify-center border-b border-[#21262d] px-4 relative">
       <div className="max-w-5xl w-full mx-auto z-10">
-        {/* Side by side: Connect card + Contact form */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-start">
-          {/* Terminal Card - social links (narrower, 2 cols) */}
           <div 
             className="md:col-span-2 glass-terminal glass-terminal-hover overflow-hidden"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            {/* Terminal title bar */}
             <div className="flex items-center gap-3 px-5 py-3 border-b border-green-500/10 bg-white/[0.02] backdrop-blur-md">
               <div className="flex gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
@@ -80,9 +76,7 @@ export function Contact() {
               <span className="font-mono text-xs text-gray-500 ml-2">~/portfolio/connect</span>
             </div>
 
-            {/* Terminal body */}
             <div className="p-6 md:p-8">
-              {/* Section title */}
               <div className="mb-6">
                 <h2 className="font-mono text-2xl text-green-400 mb-2">
                   [ CONNECT ]
@@ -90,7 +84,6 @@ export function Contact() {
                 <div className="h-px w-12 bg-gradient-to-r from-green-400 to-transparent"></div>
               </div>
 
-              {/* Social links */}
               <div className="space-y-4">
                 <div>
                   <p className="font-mono text-sm text-green-400 mb-4">
@@ -120,7 +113,6 @@ export function Contact() {
 
           {/* Contact form  */}
           <div className="md:col-span-3 glass-terminal glass-terminal-hover overflow-hidden">
-            {/* Terminal title bar */}
             <div className="flex items-center gap-3 px-5 py-3 border-b border-green-500/10 bg-white/[0.02] backdrop-blur-md">
               <div className="flex gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
@@ -164,7 +156,6 @@ export function Contact() {
                   />
                 </div>
 
-                {/* Submit button */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -181,14 +172,12 @@ export function Contact() {
                   </span>
                 </button>
 
-                {/* Success message */}
                 {submitted && (
                   <p className="font-mono text-sm text-green-400 text-center mt-2 animate-pulse">
                     ✓ mail sent
                   </p>
                 )}
 
-                {/* Error message */}
                 {errorMsg && (
                   <p className="font-mono text-sm text-red-400 text-center mt-2">
                     ✗ {errorMsg}

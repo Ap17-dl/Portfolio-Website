@@ -145,7 +145,13 @@ export function Hero() {
           >
             <div className="glass-terminal overflow-hidden rounded-none relative w-full">
               <div className="flex items-center gap-3 px-5 py-2.5 border-b border-green-500/10 bg-white/[0.02] backdrop-blur-md">
-                <span className="font-mono text-[9px] md:text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+                {/* Window Control Dots */}
+                <div className="flex gap-1.5">
+                  <div className="w-2 h-2 rounded-full bg-red-500/80"></div>
+                  <div className="w-2 h-2 rounded-full bg-yellow-500/80"></div>
+                  <div className="w-2 h-2 rounded-full bg-green-500/80"></div>
+                </div>
+                <span className="font-mono text-[9px] md:text-[10px] text-gray-500 uppercase tracking-widest font-semibold ml-1">
                   [NEURAL_ENGINE_VISUALIZATION]
                 </span>
                 <div className="ml-auto flex gap-1.5 items-center">

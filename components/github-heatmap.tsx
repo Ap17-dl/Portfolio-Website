@@ -52,7 +52,13 @@ export function GithubHeatmap() {
 
       {/* Unified Panel Header Bar */}
       <div className="flex items-center gap-3 px-5 py-2.5 border-b border-green-500/10 bg-white/[0.02] backdrop-blur-md">
-        <span className="font-mono text-[9px] md:text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+        {/* Window Control Dots */}
+        <div className="flex gap-1.5">
+          <div className="w-2 h-2 rounded-full bg-red-500/80"></div>
+          <div className="w-2 h-2 rounded-full bg-yellow-500/80"></div>
+          <div className="w-2 h-2 rounded-full bg-green-500/80"></div>
+        </div>
+        <span className="font-mono text-[9px] md:text-[10px] text-gray-500 uppercase tracking-widest font-semibold ml-1">
           [GITHUB_ACTIVITY]
         </span>
         <div className="ml-auto flex gap-1.5 items-center">
@@ -64,8 +70,8 @@ export function GithubHeatmap() {
       {/* Card Content */}
       <div className="p-5 md:p-6">
         {/* Calendar Viewport - Scaled down to fit full year without side scroll */}
-        <div className="w-full overflow-x-auto lg:overflow-x-visible pb-2 flex justify-center">
-          <div className="min-w-[460px] md:min-w-[480px] pr-2 flex justify-center">
+        <div className="w-full overflow-x-auto lg:overflow-x-visible pb-2 flex justify-center [&_svg]:w-full [&_svg]:h-auto">
+          <div className="w-full min-w-[450px] pr-2 flex justify-center">
             <GitHubCalendar
               username="Ap17-dl"
               colorScheme="dark"
@@ -77,7 +83,7 @@ export function GithubHeatmap() {
                 fontSize: '9px',
                 color: '#8B8B8B',
               }}
-              blockSize={7}
+              blockSize={8.5}
               blockMargin={2}
               fontSize={9}
               showTotalCount={false}
