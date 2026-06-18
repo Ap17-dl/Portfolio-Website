@@ -65,7 +65,7 @@ export function GithubHeatmap() {
       <div className="p-5 md:p-6">
         {/* Calendar Viewport - Scaled down to fit full year without side scroll */}
         <div className="w-full overflow-x-auto lg:overflow-x-visible pb-2 flex justify-center">
-          <div className="w-full max-w-full flex justify-center">
+          <div className="min-w-[460px] md:min-w-[480px] pr-2 flex justify-center">
             <GitHubCalendar
               username="Ap17-dl"
               colorScheme="dark"
@@ -74,12 +74,12 @@ export function GithubHeatmap() {
               }}
               style={{
                 fontFamily: 'var(--font-mono), monospace',
-                fontSize: '10px',
+                fontSize: '9px',
                 color: '#8B8B8B',
               }}
-              blockSize={8}
+              blockSize={7}
               blockMargin={2}
-              fontSize={10}
+              fontSize={9}
               showTotalCount={false}
               showColorLegend={false}
               showWeekdayLabels={false}
