@@ -122,6 +122,11 @@
   body {
     @apply bg-background text-foreground;
   }
+  @media (pointer: fine) {
+    *, *:hover, *::before, *::after {
+      cursor: none !important;
+    }
+  }
 }
 
 @keyframes blink {

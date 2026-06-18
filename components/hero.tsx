@@ -7,15 +7,12 @@ import { SystemStatus } from './system-status';
 import { GithubHeatmap } from './github-heatmap';
 
 export function Hero() {
-  // Parallax / 3D Tilt values using Framer Motion springs for premium responsiveness
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  // Smooth springs to avoid jerky movements
   const mouseXSpring = useSpring(x, { damping: 25, stiffness: 150 });
   const mouseYSpring = useSpring(y, { damping: 25, stiffness: 150 });
 
-  // Map mouse positions to rotation values (tilt range: -4 to 4 degrees)
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], [4, -4]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], [-4, 4]);
 
@@ -24,7 +21,6 @@ export function Hero() {
     const width = rect.width;
     const height = rect.height;
     
-    // Normalize coordinates around center: -0.5 to 0.5
     const relativeX = (e.clientX - rect.left) / width - 0.5;
     const relativeY = (e.clientY - rect.top) / height - 0.5;
     
@@ -33,7 +29,6 @@ export function Hero() {
   };
 
   const handleMouseLeave = () => {
-    // Reset to center smoothly
     x.set(0);
     y.set(0);
   };
@@ -45,14 +40,12 @@ export function Hero() {
       onMouseLeave={handleMouseLeave}
       className="min-h-screen flex items-center border-b border-[#21262d]/20 px-4 py-16 lg:py-24 relative overflow-hidden"
     >
-      {/* Absolute faint accent lights */}
       <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-green-500/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
       <div className="absolute bottom-1/3 left-1/4 w-[350px] h-[350px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
 
       <div className="max-w-7xl w-full mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-center">
           
-          {/* Left Column - Intro & Profile Terminal (40% width) */}
           <motion.div
             initial={{ opacity: 0, x: -25 }}
             animate={{ opacity: 1, x: 0 }}
@@ -60,7 +53,6 @@ export function Hero() {
             className="w-full lg:w-[55%] flex flex-col justify-center order-2 lg:order-1"
           >
             <div className="glass-terminal glass-terminal-hover overflow-hidden">
-              {/* Terminal title bar */}
               <div className="flex items-center gap-3 px-5 py-3 border-b border-green-500/10 bg-white/[0.02] backdrop-blur-md">
                 <div className="flex gap-2">
                   <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
@@ -70,7 +62,6 @@ export function Hero() {
                 <span className="font-mono text-xs text-gray-500 ml-2">~/portfolio/intro.txt</span>
               </div>
 
-              {/* Terminal body */}
               <div className="p-7 md:p-9">
                 <div className="space-y-5">
                   <div className="font-mono text-sm">
@@ -82,7 +73,6 @@ export function Hero() {
                     </p>
                   </div>
 
-                  {/* Content block */}
                   <div className="space-y-5 text-white">
                     <p className="font-sans text-base md:text-lg leading-relaxed text-gray-200">
                       AI/ML Engineer passionate about building scalable intelligent systems that create meaningful real-world impact.  
@@ -98,7 +88,6 @@ export function Hero() {
                     </p>
                   </div>
 
-                  {/* Cursor animation */}
                   <div className="font-mono text-lg text-green-400 h-5 flex items-center">
                     <span className="cursor">_</span>
                   </div>
@@ -106,7 +95,6 @@ export function Hero() {
               </div>
             </div>
 
-            {/* CTA Buttons */}
             <div className="flex flex-wrap gap-3.5 mt-7">
               <a
                 href="#experience"
@@ -135,7 +123,6 @@ export function Hero() {
             </div>
           </motion.div>
 
-          {/* Right Column - AI OS control panel dashboard (60% width) */}
           <motion.div
             initial={{ opacity: 0, x: 25 }}
             animate={{ opacity: 1, x: 0 }}
@@ -145,7 +132,6 @@ export function Hero() {
           >
             <div className="glass-terminal overflow-hidden rounded-none relative w-full">
               <div className="flex items-center gap-3 px-5 py-2.5 border-b border-green-500/10 bg-white/[0.02] backdrop-blur-md">
-                {/* Window Control Dots */}
                 <div className="flex gap-1.5">
                   <div className="w-2 h-2 rounded-full bg-red-500/80"></div>
                   <div className="w-2 h-2 rounded-full bg-yellow-500/80"></div>

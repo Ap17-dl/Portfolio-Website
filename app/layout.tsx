@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { AnimatedBackground } from '@/components/animated-background'
+import { CustomCursor } from '@/components/custom-cursor'
 import './globals.css'
 
 const _geist = Geist({ subsets: ["latin"] });
@@ -24,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className="font-mono antialiased relative">
+        <CustomCursor />
         <AnimatedBackground />
         <div className="relative z-10">
           {children}

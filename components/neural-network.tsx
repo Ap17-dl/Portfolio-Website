@@ -9,7 +9,7 @@ interface Node {
   baseY: number;
   vx: number;
   vy: number;
-  z: number; // Depth factor: 0.1 (far) to 1.0 (near)
+  z: number; 
   radius: number;
   pulsePhase: number;
   pulseSpeed: number;
@@ -18,7 +18,7 @@ interface Node {
 interface Packet {
   fromIndex: number;
   toIndex: number;
-  progress: number; // 0 to 1
+  progress: number; 
   speed: number;
 }
 
@@ -40,7 +40,6 @@ export function NeuralNetwork() {
     window.addEventListener('resize', handleResize);
     handleResize();
 
-    // Trigger size calculation on next tick to ensure parent is mounted and sized
     const timer = setTimeout(handleResize, 100);
 
     return () => {
@@ -59,25 +58,21 @@ export function NeuralNetwork() {
     canvas.width = dimensions.width;
     canvas.height = dimensions.height;
 
-    // Configuration
     const nodeCount = 32;
     const connectDistance = Math.min(canvas.width, canvas.height) * 0.35 || 140;
     const mouseConnectDistance = Math.min(canvas.width, canvas.height) * 0.4 || 160;
     
-    // Theme Colors
     const primaryAccent = '#00FF9C';
     const secondaryAccent = '#00C37A';
     
-    // State lists
     const nodes: Node[] = [];
     const packets: Packet[] = [];
     const maxPackets = 6;
 
-    // Initialize nodes
     for (let i = 0; i < nodeCount; i++) {
       const x = Math.random() * canvas.width;
       const y = Math.random() * canvas.height;
-      const z = 0.2 + Math.random() * 0.8; // Simulated depth
+      const z = 0.2 + Math.random() * 0.8; 
       
       nodes.push({
         x,
@@ -87,13 +82,12 @@ export function NeuralNetwork() {
         vx: (Math.random() - 0.5) * 0.25,
         vy: (Math.random() - 0.5) * 0.25,
         z,
-        radius: 1.5 + z * 2.5, // Closer nodes are larger
+        radius: 1.5 + z * 2.5,
         pulsePhase: Math.random() * Math.PI * 2,
         pulseSpeed: 0.01 + Math.random() * 0.02,
       });
     }
 
-    // Mouse coordinates tracking
     let mouse = { x: -1000, y: -1000, active: false };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -112,7 +106,6 @@ export function NeuralNetwork() {
     canvas.addEventListener('mousemove', handleMouseMove);
     canvas.addEventListener('mouseleave', handleMouseLeave);
 
-    // Get connected neighbors for a node
     const getNeighbors = (nodeIdx: number): number[] => {
       const neighbors: number[] = [];
       const node = nodes[nodeIdx];
@@ -151,7 +144,6 @@ export function NeuralNetwork() {
       time += 0.01;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // 1. Update nodes (movement, idle breathing, mouse pull)
       nodes.forEach((node) => {
         // Idle motion: Drift
         node.baseX += node.vx;
@@ -189,7 +181,6 @@ export function NeuralNetwork() {
         }
       });
 
-      // 2. Draw Connections (Edges)
       ctx.lineWidth = 1;
       for (let i = 0; i < nodes.length; i++) {
         const nodeA = nodes[i];
@@ -214,7 +205,6 @@ export function NeuralNetwork() {
         }
       }
 
-      // 3. Draw Mouse Hover Connections
       if (mouse.active) {
         nodes.forEach((node) => {
           const dx = mouse.x - node.x;
@@ -233,7 +223,6 @@ export function NeuralNetwork() {
         });
       }
 
-      // 4. Update and Draw Data Packets
       packets.forEach((packet) => {
         packet.progress += packet.speed;
 
@@ -325,7 +314,6 @@ export function NeuralNetwork() {
       ref={containerRef}
       className="w-full h-full min-h-[200px] md:min-h-[250px] relative overflow-hidden flex items-center justify-center select-none"
     >
-      {/* Background radial soft light for depth */}
       <div 
         className="absolute inset-0 pointer-events-none opacity-20"
         style={{

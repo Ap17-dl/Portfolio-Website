@@ -28,7 +28,6 @@ export function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        {/* Left side - Logo */}
         <div className="flex items-center gap-3">
           <Image 
             src="/logo.png" 
@@ -48,7 +47,7 @@ export function Header() {
         {/* Center - Navigation */}
         <nav className="hidden md:flex items-center gap-8 flex-1 ml-8">
           {[
-            { label: '[01] Home', id: 'home' },
+            { label: '[01] About', id: 'home' },
             { label: '[02] Experience', id: 'experience' },
             { label: '[03] Projects', id: 'projects' },
             { label: '[04] Connect', id: 'contact' },
@@ -63,14 +62,11 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Right side - System status (desktop) / site id (mobile) */}
         <div className="flex items-center gap-3 ml-auto">
-          {/* Mobile: show site id */}
           <div className="font-mono text-sm text-green-400 md:hidden whitespace-nowrap truncate">
             ankushpratham-portfolio
           </div>
 
-          {/* Desktop: show system status */}
           <div className="hidden md:flex items-center gap-3">
             <span className="font-mono text-xs text-gray-400">SYS_STATUS:</span>
             <div className="flex items-center gap-2">
