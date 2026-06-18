@@ -15,6 +15,7 @@ export function GithubHeatmap() {
   } | null>(null);
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   // Fetch the total contributions count dynamically from Deno API for Ap17-dl
   useEffect(() => {
@@ -37,7 +38,7 @@ export function GithubHeatmap() {
   return (
     <div 
       ref={containerRef}
-      className="glass-terminal glass-terminal-hover w-full p-5 md:p-6 rounded-none relative overflow-hidden select-none"
+      className="glass-terminal glass-terminal-hover w-full rounded-none relative overflow-hidden select-none animate-fadeIn"
     >
       {/* CRT Scanline Overlay */}
       <div 
@@ -49,71 +50,85 @@ export function GithubHeatmap() {
         }}
       />
 
-      {/* Calendar Viewport - Scaled down to fit full year without side scroll */}
-      <div className="w-full overflow-x-auto lg:overflow-x-visible pb-2 flex justify-center">
-        <div className="w-full max-w-full flex justify-center">
-          <GitHubCalendar
-            username="Ap17-dl"
-            colorScheme="dark"
-            theme={{
-              dark: ['#111815', '#0E4429', '#006D32', '#00C37A', '#00FF9C'],
-            }}
-            style={{
-              fontFamily: 'var(--font-mono), monospace',
-              fontSize: '10px',
-              color: '#8B8B8B',
-            }}
-            // Compact sizing to fit the complete 53-week year within the dashboard column
-            blockSize={8}
-            blockMargin={2}
-            fontSize={10}
-            showTotalCount={false}
-            showColorLegend={false}
-            showWeekdayLabels={false}
-            renderBlock={(block, activity) => {
-              return React.cloneElement(block, {
-                onMouseEnter: (e: React.MouseEvent<SVGElement>) => {
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  if (containerRef.current) {
-                    const containerRect = containerRef.current.getBoundingClientRect();
-                    setHoveredCell({
-                      date: activity.date,
-                      count: activity.count,
-                      level: activity.level,
-                      x: rect.left - containerRect.left + rect.width / 2,
-                      y: rect.top - containerRect.top - 8,
-                    });
-                  }
-                },
-                onMouseLeave: () => {
-                  setHoveredCell(null);
-                },
-                style: {
-                  cursor: 'pointer',
-                  transition: 'all 0.12s ease-in-out',
-                }
-              } as any);
-            }}
-          />
+      {/* Unified Panel Header Bar */}
+      <div className="flex items-center gap-3 px-5 py-2.5 border-b border-green-500/10 bg-white/[0.02] backdrop-blur-md">
+        <span className="font-mono text-[9px] md:text-[10px] text-gray-500 uppercase tracking-widest font-semibold">
+          [GITHUB_ACTIVITY]
+        </span>
+        <div className="ml-auto flex gap-1.5 items-center">
+          <span className="w-1.5 h-1.5 rounded-full bg-green-500/40 animate-pulse"></span>
+          <span className="font-mono text-[9px] text-green-400/60 uppercase">CALENDAR_ONLINE</span>
         </div>
       </div>
 
-      {/* Bottom Info Row (Left: Total Count, Right: Legend) */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mt-3 pt-2 border-t border-green-500/5">
-        {/* Total count on bottom left */}
-        <span className="font-mono text-xs text-[#8B8B8B] select-text">
-          {totalCount !== null ? totalCount : '187'} contributions in the last year
-        </span>
+      {/* Card Content */}
+      <div className="p-5 md:p-6">
+        {/* Calendar Viewport - Scaled down to fit full year without side scroll */}
+        <div className="w-full overflow-x-auto lg:overflow-x-visible pb-2 flex justify-center">
+          <div className="w-full max-w-full flex justify-center">
+            <GitHubCalendar
+              username="Ap17-dl"
+              colorScheme="dark"
+              theme={{
+                dark: ['#111815', '#0E4429', '#006D32', '#00C37A', '#00FF9C'],
+              }}
+              style={{
+                fontFamily: 'var(--font-mono), monospace',
+                fontSize: '10px',
+                color: '#8B8B8B',
+              }}
+              blockSize={8}
+              blockMargin={2}
+              fontSize={10}
+              showTotalCount={false}
+              showColorLegend={false}
+              showWeekdayLabels={false}
+              renderBlock={(block, activity) => {
+                return React.cloneElement(block, {
+                  onMouseEnter: (e: React.MouseEvent<SVGElement>) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    if (containerRef.current) {
+                      const containerRect = containerRef.current.getBoundingClientRect();
+                      setHoveredCell({
+                        date: activity.date,
+                        count: activity.count,
+                        level: activity.level,
+                        x: rect.left - containerRect.left + rect.width / 2,
+                        y: rect.top - containerRect.top - 8,
+                      });
+                    }
+                  },
+                  onMouseLeave: () => {
+                    setHoveredCell(null);
+                  },
+                  style: {
+                    // Custom tiny glowing dot cursor to prevent overlapping cells
+                    cursor: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'><circle cx='4' cy='4' r='2.5' fill='%2300FF9C' stroke='%23090d0b' stroke-width='0.5'/></svg>") 4 4, pointer`,
+                    transition: 'all 0.12s ease-in-out',
+                  }
+                } as any);
+              }}
+            />
+          </div>
+        </div>
 
-        {/* Legend block on bottom right */}
-        <div className="flex items-center gap-1.5 text-xs text-[#8B8B8B] font-mono">
-          <span>Less</span>
-          <span className="w-2.5 h-2.5 rounded-[1.5px] border border-black/10" style={{ backgroundColor: '#111815' }} />
-          <span className="w-2.5 h-2.5 rounded-[1.5px] border border-black/20" style={{ backgroundColor: '#0E4429' }} />
-          <span className="w-2.5 h-2.5 rounded-[1.5px] border border-black/20" style={{ backgroundColor: '#006D32' }} />
-          <span className="w-2.5 h-2.5 rounded-[1.5px] border border-black/20" style={{ backgroundColor: '#00C37A' }} />
-          <span className="w-2.5 h-2.5 rounded-[1.5px] border border-black/20" style={{ backgroundColor: '#00FF9C' }} />
-          <span>More</span>
+        {/* Bottom Info Row (Left: Total Count, Right: Legend) */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mt-3 pt-2 border-t border-green-500/5">
+          {/* Total count on bottom left */}
+          <span className="font-mono text-xs text-[#8B8B8B] select-text">
+            {totalCount !== null ? totalCount : '187'} contributions in the last year
+          </span>
+
+          {/* Legend block on bottom right */}
+          <div className="flex items-center gap-1.5 text-xs text-[#8B8B8B] font-mono">
+            <span>Less</span>
+            <span className="w-2.5 h-2.5 rounded-[1.5px] border border-black/10" style={{ backgroundColor: '#111815' }} />
+            <span className="w-2.5 h-2.5 rounded-[1.5px] border border-black/20" style={{ backgroundColor: '#0E4429' }} />
+            <span className="w-2.5 h-2.5 rounded-[1.5px] border border-black/20" style={{ backgroundColor: '#006D32' }} />
+            <span className="w-2.5 h-2.5 rounded-[1.5px] border border-black/20" style={{ backgroundColor: '#00C37A' }} />
+            <span className="w-2.5 h-2.5 rounded-[1.5px] border border-black/20" style={{ backgroundColor: '#00FF9C' }} />
+            <span>More</span>
+          </div>
         </div>
       </div>
 
