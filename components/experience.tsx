@@ -5,7 +5,7 @@ import { Calendar, MapPin, Briefcase } from 'lucide-react';
 const experiences = [
   {
     id: 1,
-    role: 'Software Engineering / AI-ML Intern',
+    role: 'AI-ML Intern',
     company: 'Grus & Grade Pvt. Ltd.',
     location: 'Delhi, India',
     duration: 'June 2026 - Present',

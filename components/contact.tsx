@@ -56,6 +56,7 @@ export function Contact() {
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/ankush-pratham/', icon: '$(linkedin)' },
     { name: 'Twitter', url: 'https://x.com/ankush_pratham3', icon: '$(twitter)' },
     { name: 'Email', url: 'mailto:ankush170306@gmail.com', icon: '$(mail)' },
+    { name: 'Resume', url: '/resume.pdf', icon: '$(resume)' },
   ];
 
   return (
@@ -99,6 +100,8 @@ export function Contact() {
                     <a
                       key={link.name}
                       href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="group flex items-center gap-3 font-mono text-base text-gray-300 hover:text-green-400 transition-colors duration-200"
                     >
                       <span className="text-green-400/30">→</span>
