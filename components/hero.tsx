@@ -5,6 +5,7 @@ import { motion, useSpring, useTransform, useMotionValue } from 'framer-motion';
 import { NeuralNetwork } from './neural-network';
 import { SystemStatus } from './system-status';
 import { GithubHeatmap } from './github-heatmap';
+import { FileText, Github, Linkedin } from 'lucide-react';
 
 export function Hero() {
   const x = useMotionValue(0);
@@ -64,13 +65,43 @@ export function Hero() {
 
               <div className="p-7 md:p-9">
                 <div className="space-y-5">
-                  <div className="font-mono text-sm">
+                  <div className="font-mono text-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-green-500/10 pb-3">
                     <p className="text-gray-500">
                       <span className="text-green-400">ankushpratham</span>
                       <span className="text-gray-500">@portfolio</span>
                       <span className="text-gray-500">:~$</span>
                       <span className="text-white ml-2">cat intro.txt</span>
                     </p>
+                    <div className="flex items-center gap-4 text-gray-500">
+                      <a
+                        href="/resume.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 hover:text-green-400 transition-colors duration-200"
+                        title="Resume"
+                      >
+                        <FileText size={16} className="shrink-0" />
+                        <span className="text-xs">Resume</span>
+                      </a>
+                      <a
+                        href="https://github.com/Ap17-dl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-green-400 transition-colors duration-200"
+                        title="GitHub"
+                      >
+                        <Github size={16} className="shrink-0" />
+                      </a>
+                      <a
+                        href="https://www.linkedin.com/in/ankush-pratham/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-green-400 transition-colors duration-200"
+                        title="LinkedIn"
+                      >
+                        <Linkedin size={16} className="shrink-0" />
+                      </a>
+                    </div>
                   </div>
 
                   <div className="space-y-5 text-white">
@@ -98,7 +129,7 @@ export function Hero() {
             <div className="flex flex-wrap gap-3.5 mt-7">
               <a
                 href="#experience"
-                className="font-mono text-xs md:text-sm px-5 py-3 border border-green-500/30 text-green-400 hover:border-green-400 hover:bg-green-500/10 hover:shadow-[0_0_20px_rgba(0,255,156,0.15)] transition-all duration-300 group whitespace-nowrap backdrop-blur-sm bg-gradient-to-br from-green-950/10 to-transparent"
+                className="font-mono text-xs md:text-sm px-3 py-3 border border-green-500/30 text-green-400 hover:border-green-400 hover:bg-green-500/10 hover:shadow-[0_0_20px_rgba(0,255,156,0.15)] transition-all duration-300 group whitespace-nowrap backdrop-blur-sm bg-gradient-to-br from-green-950/10 to-transparent"
               >
                 <span className="group-hover:text-green-300">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity">&gt; </span>[ VIEW_EXPERIENCE ]
@@ -106,7 +137,7 @@ export function Hero() {
               </a>
               <a
                 href="#projects"
-                className="font-mono text-xs md:text-sm px-5 py-3 border border-gray-700/50 text-gray-400 hover:border-green-500 hover:text-green-400 hover:shadow-[0_0_20px_rgba(0,255,156,0.1)] transition-all duration-300 group whitespace-nowrap backdrop-blur-sm bg-gradient-to-br from-white/[0.01] to-transparent"
+                className="font-mono text-xs md:text-sm px-3 py-3 border border-gray-700/50 text-gray-400 hover:border-green-500 hover:text-green-400 hover:shadow-[0_0_20px_rgba(0,255,156,0.1)] transition-all duration-300 group whitespace-nowrap backdrop-blur-sm bg-gradient-to-br from-white/[0.01] to-transparent"
               >
                 <span className="group-hover:text-green-300">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity">&gt; </span>[ VIEW_PROJECTS ]
@@ -114,7 +145,7 @@ export function Hero() {
               </a>
               <a
                 href="#contact"
-                className="font-mono text-xs md:text-sm px-5 py-3 border border-gray-700/50 text-gray-400 hover:border-green-500 hover:text-green-400 hover:shadow-[0_0_20px_rgba(0,255,156,0.1)] transition-all duration-300 group whitespace-nowrap backdrop-blur-sm bg-gradient-to-br from-white/[0.01] to-transparent"
+                className="font-mono text-xs md:text-sm px-3 py-3 border border-gray-700/50 text-gray-400 hover:border-green-500 hover:text-green-400 hover:shadow-[0_0_20px_rgba(0,255,156,0.1)] transition-all duration-300 group whitespace-nowrap backdrop-blur-sm bg-gradient-to-br from-white/[0.01] to-transparent"
               >
                 <span className="group-hover:text-green-300">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity">&gt; </span>[ GET_IN_TOUCH ]
