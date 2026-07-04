@@ -68,7 +68,7 @@ export function GithubHeatmap() {
           <div className="w-2 h-2 rounded-full bg-green-500/80"></div>
         </div>
         <span className="font-mono text-[9px] md:text-[10px] text-gray-500 uppercase tracking-widest font-semibold ml-1">
-          [GITHUB_ACTIVITY]
+          ~/portfolio/github_activity.exe
         </span>
         <div className="ml-auto flex gap-1.5 items-center">
           <span className="w-1.5 h-1.5 rounded-full bg-green-500/40 animate-pulse"></span>
