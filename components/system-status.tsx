@@ -103,7 +103,6 @@ export function SystemStatus() {
         </div>
       </div>
 
-      {/* Terminal Body content (with padding) */}
       <div className="p-5 md:p-6">
         <div className="space-y-4 md:space-y-5">
         {items.map((item, idx) => {
@@ -117,7 +116,6 @@ export function SystemStatus() {
                 isRowVisible ? 'opacity-100' : 'opacity-0'
               }`}
             >
-              {/* Monospace Label */}
               <div className="md:col-span-4 flex items-center gap-2">
                 <span className="font-mono text-xs text-green-400/50 select-none">
                   {item.icon}
@@ -127,11 +125,9 @@ export function SystemStatus() {
                 </span>
               </div>
 
-              {/* Monospace Value Field */}
               <div className="md:col-span-8 font-mono text-xs flex flex-wrap items-center gap-1.5">
                 {isRowVisible && (
                   <>
-                    {/* Render Special STATUS row */}
                     {item.type === 'status' && (
                       <div className="flex items-center gap-2">
                         <span className="inline-flex w-2 h-2 rounded-full bg-green-400 animate-pulse shadow-[0_0_8px_rgba(0,255,156,0.6)]"></span>
@@ -148,7 +144,6 @@ export function SystemStatus() {
                       </div>
                     )}
 
-                    {/* Render standard TEXT values */}
                     {item.type === 'value' && (
                       <span className="text-gray-200">
                         {isRowTyping ? (
@@ -162,12 +157,9 @@ export function SystemStatus() {
                       </span>
                     )}
 
-                    {/* Render TAGS values */}
                     {item.type === 'tags' && (
                       <div className="flex flex-wrap gap-1.5">
                         {(item.value as string[]).map((tag, tagIdx) => {
-                          // Check if this specific tag should be visible/typing
-                          // Simple delay logic for tags typing
                           return (
                             <motion.span
                               key={tag}
