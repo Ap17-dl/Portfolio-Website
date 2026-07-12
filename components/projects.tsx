@@ -15,7 +15,7 @@ const projects = [
   {
     id: 2,
     name: 'cricket-tournament-management-platform',
-    title: 'CricketPro',
+    title: 'Local Cricket',
     description: 'Full stack cricket tournaments management solution.',
     tags: ['React', 'PostgreSQL','Typescript', 'DBMS', 'Supabase'],
     demo: 'https://cricket-tournament-platform.vercel.app/',
@@ -32,12 +32,12 @@ const projects = [
   },
   {
     id: 4,
-    name: 'in-progress',
-    title: 'Investors Marketplace',
+    name: 'inno-verse',
+    title: 'InnoVerse',
     description: 'A modern investors marketplace platform designed to streamline startup funding, investor discovery, and business collaboration with intelligent insights.',
     tags: ['Full Stack', 'Flutter', 'MongoDB', 'Machine Learning'],
-    demo: '#',
-    source: 'https://github.com/Ap17-dl/innovators-marketplace',
+    demo: 'https://innovators-verse.vercel.app/',
+    source: 'https://github.com/Ap17-dl/Innovators-marketplace-new',
   },
 ];
 
