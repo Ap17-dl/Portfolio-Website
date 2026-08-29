@@ -18,7 +18,7 @@ const projects = [
     title: 'Local Cricket',
     description: 'Full stack cricket tournaments management solution.',
     tags: ['React', 'PostgreSQL','Typescript', 'DBMS', 'Supabase'],
-    demo: 'https://cricket-tournament-platform.vercel.app/',
+    demo: 'https://local-cricket.vercel.app/',
     source: 'https://github.com/Ap17-dl/cricket-tournament-management',
   },
   {
